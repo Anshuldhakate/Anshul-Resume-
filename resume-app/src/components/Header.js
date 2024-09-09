@@ -1,5 +1,6 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useReactToPrint } from "react-to-print";
+import mapboxgl from "mapbox-gl";
 import "./Header.css";
 
 // Import images
@@ -9,8 +10,15 @@ import foreverCareImage from './foreverCare.png';
 import adventureTravelsImage from './AdventureTravels.png';
 import glossierImage from './glossier.png';
 
+mapboxgl.accessToken = 'pk.eyJ1IjoiYW5zaHVsMTEiLCJhIjoiY20wdjUyZHhnMG1tbTJrc2RqMHU4N2JjayJ9.dV7-CkWjTwaygGL7OoFccw';  // Replace with your Mapbox token
+
 const Header = () => {
   const componentRef = useRef();
+  const mapContainer = useRef(null); // Reference for Mapbox container
+  const [lng, setLng] = useState(79.088860); // Longitude (Example: New Delhi)
+  const [lat, setLat] = useState(21.146633); // Latitude (Example: New Delhi)
+  const [zoom, setZoom] = useState(9);
+
   const [selectedSkill, setSelectedSkill] = useState(null);
   const [showHobbies, setShowHobbies] = useState(true);
   const [showReferences, setShowReferences] = useState(true);
@@ -61,6 +69,21 @@ const Header = () => {
       imageUrl: glossierImage,
     },
   ];
+
+  useEffect(() => {
+    // Initialize the Mapbox map
+    const map = new mapboxgl.Map({
+      container: mapContainer.current,
+      style: 'mapbox://styles/mapbox/streets-v11', // Map style
+      center: [lng, lat], // Initial position [longitude, latitude]
+      zoom: zoom,
+    });
+
+    // Add navigation controls to the map
+    map.addControl(new mapboxgl.NavigationControl(), 'top-right');
+
+    return () => map.remove(); // Cleanup map when component unmounts
+  }, [lng, lat, zoom]);
 
   const handleContactFormChange = (e) => {
     const { name, value } = e.target;
@@ -145,7 +168,6 @@ const Header = () => {
           </div>
         </section>
 
-            
         {/* Education Section */}
         <section id="education">
           <h2>Education</h2>
@@ -235,5 +257,21 @@ const Header = () => {
                 value={contactForm.email} onChange={handleContactFormChange} required />
                  </div>
                   <div className="form-group"> 
-                    <label htmlFor="message">Message</label> <textarea id="message" name="message" value={contactForm.message} onChange={handleContactFormChange} required /> </div> <button type="submit" className="submit-button">Send Message</button> </form> </section> </div> </div> ); };
+                    <label htmlFor="message">Message</label> <textarea id="message" name="message" value={contactForm.message} onChange={handleContactFormChange} required /> </div> <button type="submit" className="submit-button">Send Message</button> </form> </section>
+                    
+                    
+                    {/* Map Section */}
+                        <section id="location">
+                          <h2>Location</h2>
+                          <div ref={mapContainer} className="map-container" style={{ height: '300px', width: '100%' }}></div>
+                        </section>
+                    
+                     </div>
+                      </div> 
+                      );
+                     };
+
+
+
+
 export default Header;
