@@ -2,6 +2,9 @@
 
 This is a fully responsive, interactive static web resume built with React. It includes various sections such as personal profile, experience, skills, hobbies, education, portfolio, and a contact form. The resume is highly customizable and features interactive elements like toggle buttons for viewing responsibilities and downloadable PDFs.
 
+## Deployed Link-
+ https://zippy-semifreddo-e4aee0.netlify.app
+
 ## Features
 
 - **Profile Section:** Display a profile picture and your personal details.
