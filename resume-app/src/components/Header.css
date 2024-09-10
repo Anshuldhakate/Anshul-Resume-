@@ -1,8 +1,9 @@
 /* src/components/Resume.css */
 
-.body{
+.body {
     background-color: black;
 }
+
 .resume-container {
     max-width: 1000px;
     margin: 0 auto;
@@ -146,13 +147,52 @@ h2 {
     transform: translateY(-5px);
 }
 
-.skills-list,
-.hobbies-list {
+/* Skills List Styles */
+.skills-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 10px;
     list-style: none;
     padding: 0;
+    margin: 0;
+}
+
+.skills-list li {
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.skills-list li:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.05);
+}
+
+/* Hobbies List Styles */
+.hobbies-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.hobbies-list li {
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.hobbies-list li:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.05);
 }
 
 .toggle-button {
@@ -166,22 +206,6 @@ h2 {
 
 .hobbies-list {
     margin-left: 20px;
-}
-
-.skills-list li,
-.hobbies-list li {
-    padding: 10px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.skills-list li:hover,
-.hobbies-list li:hover {
-    background-color: #f0f0f0;
-    transform: scale(1.05);
 }
 
 .skill-rating {

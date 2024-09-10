@@ -10,13 +10,13 @@ import foreverCareImage from './foreverCare.png';
 import adventureTravelsImage from './AdventureTravels.png';
 import glossierImage from './glossier.png';
 
-mapboxgl.accessToken = 'pk.eyJ1IjoiYW5zaHVsMTEiLCJhIjoiY20wdjUyZHhnMG1tbTJrc2RqMHU4N2JjayJ9.dV7-CkWjTwaygGL7OoFccw';  // Replace with your Mapbox token
+mapboxgl.accessToken = 'pk.eyJ1IjoiYW5zaHVsMTEiLCJhIjoiY20wdjUyZHhnMG1tbTJrc2RqMHU4N2JjayJ9.dV7-CkWjTwaygGL7OoFccw';  
 
 const Header = () => {
   const componentRef = useRef();
-  const mapContainer = useRef(null); // Reference for Mapbox container
-  const [lng, setLng] = useState(79.088860); // Longitude (Example: New Delhi)
-  const [lat, setLat] = useState(21.146633); // Latitude (Example: New Delhi)
+  const mapContainer = useRef(null); 
+  const [lng, setLng] = useState(79.088860); 
+  const [lat, setLat] = useState(21.146633); 
   const [zoom, setZoom] = useState(9);
 
   const [selectedSkill, setSelectedSkill] = useState(null);
@@ -38,6 +38,7 @@ const Header = () => {
     { skill: "CSS", rating: 5 },
     { skill: "JavaScript", rating: 5 },
     { skill: "React", rating: 4 },
+    { skill: "Redux", rating: 4 },
     { skill: "Node.js", rating: 4 },
     { skill: "Express.js", rating: 4 },
     { skill: "Mongodb", rating: 4 },
@@ -71,18 +72,18 @@ const Header = () => {
   ];
 
   useEffect(() => {
-    // Initialize the Mapbox map
+    
     const map = new mapboxgl.Map({
       container: mapContainer.current,
-      style: 'mapbox://styles/mapbox/streets-v11', // Map style
-      center: [lng, lat], // Initial position [longitude, latitude]
+      style: 'mapbox://styles/mapbox/streets-v11', 
+      center: [lng, lat], 
       zoom: zoom,
     });
 
-    // Add navigation controls to the map
+   
     map.addControl(new mapboxgl.NavigationControl(), 'top-right');
 
-    return () => map.remove(); // Cleanup map when component unmounts
+    return () => map.remove(); 
   }, [lng, lat, zoom]);
 
   const handleContactFormChange = (e) => {
@@ -274,4 +275,4 @@ const Header = () => {
 
 
 
-export default Header;
+            export default Header;
